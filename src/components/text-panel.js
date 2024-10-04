@@ -27,10 +27,11 @@ export class TextPanel extends Phaser.GameObjects.Container {
         );
         this.add(this.#panel);  // Add panel to the container
         // Position character image in the bottom right corner
-        this.#character = this.scene.add.image(this.scene.scale.width - 200 , this.scene.scale.height - 300, "character");
-        this.#character.setOrigin(0.5)
+        this.#character = this.scene.add.image(650, -450, "character");
+        this.#character.setOrigin(0)
         this.#character.setDisplaySize(700, 700);
         this.#character.setFlipX(true)
+        this.add(this.#character)
         // Add text inside the panel
         this.#textObject = this.scene.add.text(
             this.#panel.x - 550,  // Adjusted to start from the left side of the panel
