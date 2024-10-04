@@ -49,10 +49,16 @@ export class TextPanel extends Phaser.GameObjects.Container {
 
     setText(newIndex) {
         if (this.#currentTextIndex >= this.#text.length - 1) {
+            this.setVisible(false);
             return;
         }
         this.#currentTextIndex = newIndex;
         this.#textObject.setText(this.#text[this.#currentTextIndex]);
+    }
+
+    set text(newtext) {
+        this.#text = newtext; // This sets the new text
+        this.setText(0);  // Reset text to the first element
     }
 
     // New method to handle space key press

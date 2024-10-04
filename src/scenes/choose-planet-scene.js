@@ -37,9 +37,26 @@ export class ChoosePlanetScene extends Phaser.Scene {
 
         planetCard.setInteractive().on('pointerdown', () => {
             if (planet.name === this.#correctPlanet) {
-               // console.log("correct planet");
+
+      //create text panel 
+      this.#textPanel = new TextPanel(this, ["Congratulations"]);
+      this.add.existing(this.#textPanel);
+      this.#textPanel.setPosition((this.scale.width / 2) - 200, this.scale.height - 180);
+        // Add event listener for the Enter key
+        this.input.keyboard.on('keydown-ENTER', () => {
+            this.#textPanel.setVisible(false);
+        });
+               
             } else {
-             //   console.log("wrong planet");
+              
+      //create text panel 
+      this.#textPanel = new TextPanel(this, ["try again"]);
+      this.add.existing(this.#textPanel);
+      this.#textPanel.setPosition((this.scale.width / 2) - 200, this.scale.height - 180);
+        // Add event listener for the Enter key
+        this.input.keyboard.on('keydown-ENTER', () => {
+            this.#textPanel.setVisible(false);
+        });
             }
             this.#textPanel.setVisible(true); // Make the text panel visible
         });
@@ -50,15 +67,6 @@ export class ChoosePlanetScene extends Phaser.Scene {
       text.setOrigin(0.5);
       text.setDepth(1); // make sure the text is always on top of the planets
 
-      //create text panel 
-      this.#textPanel = new TextPanel(this, ['After learning about the conditions suitable for life, which planet do you think is the most hapitable?', 'Planet 1 is known for its extreme temperatures, low gravity, and high radiation levels. It is suitable for life as a desert planet.', 'Planet 2 is known for its cool temperatures, moderate gravity, and low radiation levels. It is suitable for life as a desert planet.', 'Planet 3 is known for its high temperatures, moderate gravity, and low radiation levels. It is suitable for life as a desert planet.', 'Planet 4 is known for its cool temperatures, high gravity, and low radiation levels. It is suitable for life as a desert planet.']);
-      this.add.existing(this.#textPanel);
-      this.#textPanel.setPosition((this.scale.width / 2) - 200, this.scale.height - 180);
-      this.#textPanel.setVisible(false); // Initially hide the text panel
-
-      // Add event listener for the Enter key
-      this.input.keyboard.on('keydown-ENTER', () => {
-          this.#textPanel.setVisible(false);
-      });
+    
     }
   }

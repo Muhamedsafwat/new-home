@@ -9,14 +9,14 @@ export class LifeStandardsScene extends Phaser.Scene {
     }
   
     preload() {
-      this.load.image('space-bg', 'assets/images/start-bg.jpg');
+      this.load.image('lab', 'assets/images/lab.jpg');
       this.load.image('text-panel', 'assets/images/ui/text-panel.png');
       this.load.image('character', "assets/images/characters/astronaut-cutscenes.png")
     }
   
     create() {
         //add background image
-      const background = this.add.image(0, 0, 'space-bg');
+      const background = this.add.image(0, 0, 'lab');
       background.setOrigin(0, 0);
       background.setDisplaySize(this.scale.width, this.scale.height);
       this.#textPanel = new TextPanel(this, this.#textArray)
