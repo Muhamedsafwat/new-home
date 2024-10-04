@@ -5,6 +5,7 @@ import { GameScene } from './scenes/game-scene.js';
 import { ExplorationScene } from './scenes/exploration-scene.js';
 import { PreloadScene } from './scenes/preload-scene.js';
 import { LifeStandardsScene } from './scenes/life-standards-scene.js';
+import { ChoosePlanetScene } from './scenes/choose-planet-scene.js';
 
 const game = new Phaser.Game({
   type: Phaser.CANVAS,
@@ -36,5 +37,6 @@ game.scene.add('VideoScene', VideoScene);
 game.scene.add('GameScene', GameScene);
 game.scene.add('ExplorationScene', ExplorationScene);
 game.scene.add('LifeStandardsScene', LifeStandardsScene);
+game.scene.add('ChoosePlanetScene', ChoosePlanetScene);
 
 game.scene.start('PreloadScene');
