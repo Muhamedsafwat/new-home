@@ -41,7 +41,7 @@ export class LifeStandardsScene extends Phaser.Scene {
   handleSpacePress() {
     // Logic to execute when space is pressed
     if (this.#timesClicked >= this.#textArray.length - 1) {
-      this.scene.start("ExplorationSceneq");
+      this.scene.start("ExplorationScene");
     } else {
       this.#timesClicked++;
     }
