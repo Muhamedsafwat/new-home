@@ -33,15 +33,19 @@ export class StarsBackground extends Phaser.GameObjects.Container {
     if (this.starsCountdown <= 0) {
       // add random background object
       var x = Phaser.Math.Between(0, this.scene.scale.width - 32);
+      var y = Phaser.Math.Between(0, this.scene.scale.height );
       // recycle old background objects
       var newobj = this.starsGroup.getFirstDead(false);
 
       // if there aren't any available, create a new one
       if (!newobj) {
-        newobj = this.scene.add.image(x, this.scene.scale.height, "staralpha");
+      
+        newobj = this.scene.add.image(x, y, "staralpha");
         this.starsGroup.add(newobj);
       } else {
-        newobj.setPosition(x, this.scene.scale.height);
+        
+
+        newobj.setPosition(x, y);
         newobj.setActive(true).setVisible(true);
       }
 
@@ -50,7 +54,7 @@ export class StarsBackground extends Phaser.GameObjects.Container {
       newobj.health = scale; // for sorting
 
       // random countdown to new background object
-      this.starsCountdown = Phaser.Math.Between(20, 30);
+      this.starsCountdown = Phaser.Math.Between(15, 30);
     }
   }
 }
