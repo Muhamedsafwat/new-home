@@ -1,3 +1,5 @@
+import { PLANETS_DATA } from "../constants/index.js";
+import { Planet } from "../objects/planet.js";
 import { SpaceShip } from "../objects/space-ship.js";
 import { StarsBackground } from "../objects/stars-background.js";
 
@@ -6,6 +8,8 @@ export class ExplorationScene extends Phaser.Scene {
   starsBackground;
   /** @type {SpaceShip} */
   spaceShip;
+  /** @type {Planet[]} */
+  planets = [];
 
   constructor() {
     super("ExplorationScene");
@@ -20,12 +24,22 @@ export class ExplorationScene extends Phaser.Scene {
     // Create the stars background and spaceship objects
     this.starsBackground = new StarsBackground(this);
     this.spaceShip = new SpaceShip(this);
+
+    PLANETS_DATA.forEach((planet) => {
+      this.planets.push(
+        new Planet(
+          this,
+          planet.position.x,
+          planet.position.y,
+          planet.name
+        ).setScale(0.3)
+      );
+    });
   }
 
   update() {
     // Get the spaceship's velocity and pass it to the background update method
-    const spaceshipVelocity = this.spaceShip.getVelocity();
-    this.starsBackground.backgroundObjsUpdate(spaceshipVelocity);
+    this.starsBackground.backgroundObjsUpdate();
 
     // Update the spaceship
     this.spaceShip.update();

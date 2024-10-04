@@ -108,5 +108,35 @@
                 }
             }
         ]
+    },
+    {
+        "path": "assets/images/planets",
+        "files": [
+            {
+                "type": "image",
+                "key": "planet1",
+                "url": "planet1.png"
+            },
+            {
+                "type": "image",
+                "key": "planet2",
+                "url": "planet2.png"
+            },
+            {
+                "type": "image",
+                "key": "planet3",
+                "url": "planet3.png"
+            },
+            {
+                "type": "image",
+                "key": "planet4",
+                "url": "planet4.png"
+            },
+            {
+                "type": "image",
+                "key": "planet5",
+                "url": "planet5.png"
+            }
+        ]
     }
 ]
