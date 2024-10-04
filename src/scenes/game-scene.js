@@ -9,7 +9,7 @@ export class GameScene extends Phaser.Scene {
     this.add
       .text(225, 320, 'Game Scene Started!', {
         font: '32px Arial',
-        fill: '#ffffff',
+        // fill: '#ffffff',
       })
       .setOrigin(0.5);
   }
