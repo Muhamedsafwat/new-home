@@ -4,14 +4,15 @@ export class StartScene extends Phaser.Scene {
   }
 
   preload() {
+    
     this.load.image('startBackground', 'assets/images/piiixl/earth.png');
+    this.load.audio('clickSound', 'assets/audio/click.mp3'); // click sound
   }
 
   create() {
-    // Add the background image
+    //  background image
     const background = this.add.image(0, 0, 'startBackground');
     background.setOrigin(0, 0);
-
     background.setScale(this.scale.width / background.width, this.scale.height / background.height);
 
     const menuBackground = this.add.graphics();
@@ -33,18 +34,19 @@ export class StartScene extends Phaser.Scene {
       .setOrigin(0.5);
 
     // Create username input
-    const usernameInput = this.add.dom(this.scale.width / 2, menuY + 80).createFromHTML(`\
-        <input type="text" id="username" name="username" placeholder="Username" style="width: 100%; max-width: 300px; padding: 10px;">\
+    const usernameInput = this.add.dom(this.scale.width / 2, menuY + 80).createFromHTML(`
+        <input type="text" id="username" name="username" placeholder="Username" style="width: 100%; max-width: 300px; padding: 10px;">
       `);
 
     // Create login button
-    const loginButton = this.add.dom(this.scale.width / 2, menuY + 130).createFromHTML(`\
-        <button id="loginBtn" style="width: 100%; max-width: 300px; padding: 10px 20px; font-size: 18px;">Play</button>\
+    const loginButton = this.add.dom(this.scale.width / 2, menuY + 130).createFromHTML(`
+        <button id="loginBtn" style="width: 100%; max-width: 300px; padding: 10px 20px; font-size: 18px;">Play</button>
       `);
 
     // Set up event listener for the login button
     loginButton.addListener('click');
     loginButton.on('click', () => {
+      this.sound.play('clickSound'); //  click sound
       const username = document.getElementById('username').value;
 
       if (username) {
@@ -54,6 +56,16 @@ export class StartScene extends Phaser.Scene {
       } else {
         alert('Please enter your username');
       }
+    });
+
+    // Listen for clicks 
+    this.input.on('pointerdown', (pointer) => {
+      this.sound.play('clickSound'); // Play click sound 
+    });
+
+    
+    this.scene.on('start', () => {
+      console.log('StartScene is active'); 
     });
   }
 }
