@@ -13,7 +13,7 @@ export class SpaceShip extends Phaser.GameObjects.Container {
     this.scene.physics.add.existing(this);
     this.body.setSize(64, 64);
     this.body.setOffset(-32, -32);
-    this.body.setCollideWorldBounds(false); // Disable world bounds
+    this.body.setCollideWorldBounds(true);
     this.setDepth(2);
 
     // Create the sprites
@@ -25,14 +25,18 @@ export class SpaceShip extends Phaser.GameObjects.Container {
     this.#shipEngineThrusterSprite.play("ship_engine_thruster");
 
     // Add sprites to the container
-    this.add([this.#shipEngineThrusterSprite, this.#shipEngineSprite, this.#shipSprite]);
+    this.add([
+      this.#shipEngineThrusterSprite,
+      this.#shipEngineSprite,
+      this.#shipSprite,
+    ]);
 
     // Create keyboard cursors (arrow keys)
     this.cursors = scene.input.keyboard.createCursorKeys();
   }
 
   update() {
-    const speed = 25;
+    const speed = 150;
     this.body.setVelocity(0); // Reset velocity
 
     // Handle input for movement and angle change
@@ -51,10 +55,5 @@ export class SpaceShip extends Phaser.GameObjects.Container {
       this.body.setVelocityY(speed);
       this.setAngle(180); // Face down
     }
-  }
-
-  // Function to retrieve the velocity of the spaceship
-  getVelocity() {
-    return this.body.velocity;
   }
 }
