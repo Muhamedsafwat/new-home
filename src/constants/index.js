@@ -1,4 +1,4 @@
-export const PLANETS_DATA = [
+export let PLANETS_DATA = [
   {
     key: "planet1",
     name: "TRAPPIST-1 d",

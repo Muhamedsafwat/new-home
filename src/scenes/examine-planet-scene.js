@@ -3,6 +3,7 @@ import { TextPanel } from "../components/text-panel.js";
 import { Tablet } from "../components/tablet.js";
 export class ExaminePlanet extends Phaser.Scene {
   #planetData;
+  #planetsData
   #timesClicked = 0;
   #textPanel;
   #textArray;
@@ -33,7 +34,9 @@ export class ExaminePlanet extends Phaser.Scene {
   }
 
   init(data) {
+    console.log("zebi",data)
     this.#planetData = data.planetData;
+    this.#planetsData = data.planetsData;
   }
 
   create() {
@@ -48,8 +51,10 @@ export class ExaminePlanet extends Phaser.Scene {
       this.scale.width / 2 - 200,
       this.scale.height - 180
     ); // Adjust position as needed
+    console.log("555",this.#planetsData)
     //create tablet instance
-    this.#tablet = new Tablet(this, "tablet", this.#planetData.properties);
+    console.log(this.#planetData)
+    this.#tablet = new Tablet(this, "tablet", this.#planetData.properties||this.#planetData.planetData.properties,this.#planetData.planetData||this.#planetsData);
 
     this.#tablet.setPosition(this.scale.width / 2 - 100, this.scale.height / 2); // Adjust position as needed
 

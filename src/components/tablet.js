@@ -7,11 +7,13 @@ export class Tablet extends Phaser.GameObjects.Container {
   #tabletImage;
   #imageKey;
   #properties;
-
-  constructor(scene, imageKey, properties) {
+  #planetsData
+  
+  constructor(scene, imageKey, properties,planetsData) {
     super(scene, 0, 0); // Call super with initial x and y coordinates
     this.#imageKey = imageKey;
     this.#properties = properties;
+    this.#planetsData = planetsData;
     this.create(); // Call create in the constructor
   }
 
@@ -112,7 +114,7 @@ export class Tablet extends Phaser.GameObjects.Container {
 
     // Add event listener for click effect
     text.on("pointerdown", () => {
-      this.scene.scene.start("ExplorationScene"); // Change scene to ShipScene
+      this.scene.scene.start("ExplorationScene",{planets:this.#planetsData}); // Change scene to ShipScene
     });
   }
   // New method to handle space key press

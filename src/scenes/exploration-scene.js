@@ -13,37 +13,63 @@ export class ExplorationScene extends Phaser.Scene {
 
   constructor() {
     super("ExplorationScene");
+    this.planets = [];
   }
 
+  init(data) {
+    console.log(data)
+    this.planets = data.planets ? data.planets : [];
+  }
   preload() {
     this.load.pack("asset_pack", "assets/data/assets.json");
     this.load.image("staralpha", "assets/images/staralpha.png");
   }
 
   create() {
+    console.log("Creating ExplorationScene");
     // Create the stars background and spaceship objects
     this.starsBackground = new StarsBackground(this);
     this.spaceShip = new SpaceShip(this);
 
-    PLANETS_DATA.forEach((planet) => {
-      const newPLanet = new Planet(
-        this,
-        planet.position.x,
-        planet.position.y,
-        planet.key,
-        planet
-      ).setScale(0.3);
-      this.planets.push(newPLanet);
+    if (!this.planets.length){
+      PLANETS_DATA.forEach((planet) => {
+        const newPLanet = new Planet(
+          this,
+          planet.position.x,
+          planet.position.y,
+          planet.key,
+          planet
+        ).setScale(0.3);
+        this.planets.push(newPLanet);
 
-      // Add physics overlap check between spaceship and planet
-      this.physics.add.overlap(
-        this.spaceShip,
-        newPLanet,
-        this.handleOverlap,
-        null,
-        this
-      );
-    });
+        // Add physics overlap check between spaceship and planet
+        this.physics.add.overlap(
+          this.spaceShip,
+          newPLanet,
+          this.handleOverlap,
+          null,
+          this
+        );
+      })}else{
+        this.planets.forEach((planet) => {
+          const newPLanet = new Planet(
+            this,
+            planet.planetData.position.x,
+            planet.planetData.position.y,
+            planet.planetData.key,
+            planet
+          ).setScale(0.3);
+  
+          // Add physics overlap check between spaceship and planet
+          this.physics.add.overlap(
+            this.spaceShip,
+            newPLanet,
+            this.handleOverlap,
+            null,
+            this
+          );
+        })
+      };
   }
 
   handleOverlap(spaceShipGameObject, planetGameObject) {
@@ -51,6 +77,7 @@ export class ExplorationScene extends Phaser.Scene {
     // @ts-ignore
     this.scene.start("ExaminePlanet", {
       planetData: planetGameObject.planetData,
+      planetsData: this.planets,
     });
   }
 
