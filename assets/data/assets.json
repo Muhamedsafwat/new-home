@@ -144,27 +144,27 @@
         "files": [
             {
                 "type": "image",
-                "key": "bg1",
+                "key": "planet-1-bg",
                 "url": "bg-1.jpg"
             },
             {
                 "type": "image",
-                "key": "bg2",
+                "key": "planet-1-bg",
                 "url": "bg-2.jpg"
             },
             {
                 "type": "image",
-                "key": "bg3",
+                "key": "planet-3-bg",
                 "url": "bg-3.jpg"
             },
             {
                 "type": "image",
-                "key": "bg4",
+                "key": "planet-4-bg",
                 "url": "bg-4.jpg"
             },
             {
                 "type": "image",
-                "key": "bg5",
+                "key": "planet-5-bg",
                 "url": "bg-5.jpg"
             }
         ]

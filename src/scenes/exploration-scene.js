@@ -26,15 +26,28 @@ export class ExplorationScene extends Phaser.Scene {
     this.spaceShip = new SpaceShip(this);
 
     PLANETS_DATA.forEach((planet) => {
-      this.planets.push(
-        new Planet(
-          this,
-          planet.position.x,
-          planet.position.y,
-          planet.name
-        ).setScale(0.3)
+      const newPLanet = new Planet(
+        this,
+        planet.position.x,
+        planet.position.y,
+        planet.name
+      ).setScale(0.3);
+      this.planets.push(newPLanet);
+
+      // Add physics overlap check between spaceship and planet
+      this.physics.add.overlap(
+        this.spaceShip,
+        newPLanet,
+        this.handleOverlap,
+        null,
+        this
       );
     });
+  }
+
+  handleOverlap(spaceShipGameObject, planetGameObject) {
+    console.log("SpaceShip collided with Planet!");
+    console.log(spaceShipGameObject, planetGameObject);
   }
 
   update() {

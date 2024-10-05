@@ -36,7 +36,7 @@ export class SpaceShip extends Phaser.GameObjects.Container {
   }
 
   update() {
-    const speed = 150;
+    const speed = 200;
     this.body.setVelocity(0); // Reset velocity
 
     // Handle input for movement and angle change
