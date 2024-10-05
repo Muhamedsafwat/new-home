@@ -76,6 +76,44 @@ export class Tablet extends Phaser.GameObjects.Container {
         }); // Moved here
       });
     });
+
+    const text = this.scene.add.text(
+      this.#tabletImage.x - 150, // Adjusted to start from the left side of the image
+      this.#tabletImage.y + 4 * 100 - 200, // Adjusted to start from the top of the image with spacing
+      "الرجوع الي السفينة",
+      {
+        font: "36px Arial",
+        color: "#000000", // Changed 'fill' to 'color' as per Phaser's documentation
+        wordWrap: { width: this.#tabletImage.displayWidth * 0.8 },
+      }
+    );
+    text.setOrigin(0);
+    this.add(text); // Add text to the container
+
+    // Add event listener for hover effect
+    text.setInteractive(); // Enable interaction for the text
+    text.on("pointerover", () => {
+      this.scene.tweens.add({
+        targets: text,
+        scale: 1.1, // Scale up slightly
+        duration: 200, // Duration of the animation in milliseconds
+        ease: "Power2", // Easing function for smoothness
+      });
+    });
+
+    text.on("pointerout", () => {
+      this.scene.tweens.add({
+        targets: text,
+        scale: 1, // Reset scale
+        duration: 200, // Duration of the animation in milliseconds
+        ease: "Power2", // Easing function for smoothness
+      });
+    });
+
+    // Add event listener for click effect
+    text.on("pointerdown", () => {
+      this.scene.scene.start("ExplorationScene"); // Change scene to ShipScene
+    });
   }
   // New method to handle space key press
 }
