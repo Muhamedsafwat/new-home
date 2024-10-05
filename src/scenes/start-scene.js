@@ -4,7 +4,7 @@ export class StartScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("startBackground", "assets/images/piiixl/earth.png");
+    this.load.image("startBackground", "assets/images/start-background.jpg");
     // this.load.audio('clickSound', 'assets/audio/click.mp3'); // click sound
   }
 
@@ -17,50 +17,36 @@ export class StartScene extends Phaser.Scene {
       this.scale.height / background.height
     );
 
-    const menuBackground = this.add.graphics();
-    menuBackground.fillStyle(0x000000, 0.5);
-
-    const menuWidth = 320;
-    const menuHeight = 180;
-
-    const menuX = (this.scale.width - menuWidth) / 2;
-    const menuY = 180;
-    menuBackground.fillRect(menuX, menuY, menuWidth, menuHeight);
-
-    // Add login text
+    // game name
     this.add
-      .text(this.scale.width / 2, menuY + 30, "Enter your name", {
-        font: "24px Arial",
-        // fill: "#ffffff",
+      .text(this.scale.width / 2, this.scale.height - 300, "A NEW HOME", {
+        font: "80px SupremeSpike",
       })
       .setOrigin(0.5);
 
-    // Create username input
-    const usernameInput = this.add.dom(this.scale.width / 2, menuY + 80)
-      .createFromHTML(`
-        <input type="text" id="username" name="username" placeholder="Username" style="width: 100%; max-width: 300px; padding: 10px;">
-      `);
+    const pressSpaceText = this.add
+      .text(
+        this.scale.width / 2,
+        this.scale.height - 200,
+        "Press Space to start",
+        {
+          font: "28px",
+        }
+      )
+      .setOrigin(0.5);
 
-    // Create login button
-    const loginButton = this.add.dom(this.scale.width / 2, menuY + 130)
-      .createFromHTML(`
-        <button id="loginBtn" style="width: 100%; max-width: 300px; padding: 10px 20px; font-size: 18px;">Play</button>
-      `);
+    this.tweens.add({
+      targets: pressSpaceText,
+      alpha: { from: 1, to: 0 }, // Animate opacity from 1 to 0
+      duration: 1500, // Duration of each fade (1 second)
+      yoyo: true, // Revert the animation (fade back to 1)
+      repeat: -1, // Repeat indefinitely
+    });
 
-    // Set up event listener for the login button
-    loginButton.addListener("click");
-    loginButton.on("click", () => {
-      // this.sound.play("clickSound"); //  click sound
-      // @ts-ignore
-      const username = document.getElementById("username").value;
-
-      if (username) {
-        console.log("Username:", username);
-        // Switch to the VideoScene after login
-        this.scene.start("VideoScene");
-      } else {
-        alert("Please enter your username");
-      }
+    // Detecting the spacebar press
+    this.input.keyboard.on("keydown-SPACE", () => {
+      // Move to the next scene, for example, 'GameScene'
+      this.scene.start("VideoScene");
     });
   }
 }

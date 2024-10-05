@@ -19,10 +19,20 @@
       canvas {
         border: 2px solid #444;
       }
+      
     </style>
+    <style media='screen' type='text/css'>
+      @font-face {
+        font-family: SupremeSpike;
+        src: url('/assets/fonts/SupremeSpike-KVO8D.otf');
+        font-weight:700;
+        font-weight:bold;
+      }
+</style>
     <script src="assets/js/phaser.min.js"></script>
   </head>
   <body>
+    <div style="font-family:SupremeSpike; position:absolute; left:-1000px; visibility:hidden;">.</div>
     <div class="container" id="game-container"></div>
     <script src="src/main.js" type="module"></script>
   </body>

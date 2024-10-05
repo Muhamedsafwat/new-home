@@ -40,4 +40,4 @@ game.scene.add("ExplorationScene", ExplorationScene);
 game.scene.add("LifeStandardsScene", LifeStandardsScene);
 game.scene.add("ChoosePlanetScene", ChoosePlanetScene);
 game.scene.add("ExaminePlanet", ExaminePlanet);
-game.scene.start("ExplorationScene");
+game.scene.start("StartScene");
