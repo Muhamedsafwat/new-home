@@ -34,7 +34,6 @@ export class ExaminePlanet extends Phaser.Scene {
   }
 
   init(data) {
-    console.log("zebi",data)
     this.#planetData = data.planetData;
     this.#planetsData = data.planetsData;
   }
@@ -51,9 +50,7 @@ export class ExaminePlanet extends Phaser.Scene {
       this.scale.width / 2 - 200,
       this.scale.height - 180
     ); // Adjust position as needed
-    console.log("555",this.#planetsData)
     //create tablet instance
-    console.log(this.#planetData)
     this.#tablet = new Tablet(this, "tablet", this.#planetData.properties,this.#planetsData);
 
     this.#tablet.setPosition(this.scale.width / 2 - 100, this.scale.height / 2); // Adjust position as needed

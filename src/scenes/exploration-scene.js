@@ -17,7 +17,6 @@ export class ExplorationScene extends Phaser.Scene {
   }
 
   init(data) {
-    console.log(data)
     this.planets = data.planets ? data.planets : [];
   }
   preload() {
@@ -26,12 +25,12 @@ export class ExplorationScene extends Phaser.Scene {
   }
 
   create() {
-    console.log("Creating ExplorationScene");
     // Create the stars background and spaceship objects
     this.starsBackground = new StarsBackground(this);
     this.spaceShip = new SpaceShip(this);
+   
 
-    if (!this.planets.length){
+    if (!this.planets.length) {
       PLANETS_DATA.forEach((planet) => {
         const newPLanet = new Planet(
           this,
@@ -50,33 +49,50 @@ export class ExplorationScene extends Phaser.Scene {
           null,
           this
         );
-      })}else{
-        this.planets.forEach((planet) => {
-          const newPLanet = new Planet(
-            this,
-            planet.planetData.position.x,
-            planet.planetData.position.y,
-            planet.planetData.key,
-            planet
-          ).setScale(0.3);
-  
-          // Add physics overlap check between spaceship and planet
-          this.physics.add.overlap(
-            this.spaceShip,
-            newPLanet,
-            this.handleOverlap,
-            null,
-            this
-          );
-        })
-      };
+      });
+    } else {
+      this.planets.forEach((planet) => {
+        const newPLanet = new Planet(
+          this,
+          planet.planetData.position.x,
+          planet.planetData.position.y,
+          planet.planetData.key,
+          planet
+        ).setScale(0.3);
+
+        // Add physics overlap check between spaceship and planet
+        this.physics.add.overlap(
+          this.spaceShip,
+          newPLanet,
+          this.handleOverlap,
+          null,
+          this
+        );
+      });
+    }
+
+    var allVisited = true;
+    this.planets.forEach((planet) => {
+      // @ts-ignore
+      if (!planet.planetData.isVisited) {
+        allVisited = false;
+        return
+      }
+    });
+
+    if (allVisited) this.scene.start("ChoosePlanetScene");
   }
 
   handleOverlap(spaceShipGameObject, planetGameObject) {
+    if (planetGameObject.planetData.isVisited == undefined) {
+      planetGameObject.planetData.planetData.isVisited = true;
+    }
     planetGameObject.planetData.isVisited = true;
     // @ts-ignore
     this.scene.start("ExaminePlanet", {
-      planetData: planetGameObject.planetData.planetData?planetGameObject.planetData.planetData:planetGameObject.planetData,
+      planetData: planetGameObject.planetData.planetData
+        ? planetGameObject.planetData.planetData
+        : planetGameObject.planetData,
       planetsData: this.planets,
     });
   }
