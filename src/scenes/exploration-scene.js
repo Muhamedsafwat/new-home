@@ -76,7 +76,7 @@ export class ExplorationScene extends Phaser.Scene {
     planetGameObject.planetData.isVisited = true;
     // @ts-ignore
     this.scene.start("ExaminePlanet", {
-      planetData: planetGameObject.planetData,
+      planetData: planetGameObject.planetData.planetData?planetGameObject.planetData.planetData:planetGameObject.planetData,
       planetsData: this.planets,
     });
   }
