@@ -6,11 +6,13 @@ export class PlanetChoiceCard extends Phaser.GameObjects.Container {
    #text;
    #imageKey;
    #textObject
+   testResult
 
-    constructor(scene, text, imageKey) {
+    constructor(scene, text, imageKey,testResult) {
         super(scene, 0, 0);  // Call super with initial x and y coordinates
         this.#text = text;
         this.#imageKey = imageKey;
+        this.testResult = testResult;
         this.create();  // Call create in the constructor
 
        

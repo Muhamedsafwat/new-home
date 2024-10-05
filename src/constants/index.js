@@ -34,7 +34,7 @@ export let PLANETS_DATA = [
         ],
       },
     ],
-    testResult: "",
+    testResult: " Wrong, try again",
     background: "bg-1",
   },
 
@@ -73,7 +73,7 @@ export let PLANETS_DATA = [
         ],
       },
     ],
-    testResult: "",
+    testResult: "Correct answer",
     background: "bg-2",
   },
   {
@@ -111,12 +111,12 @@ export let PLANETS_DATA = [
         ],
       },
     ],
-    testResult: "",
+    testResult: " Wrong, try again",
     background: "bg-3",
   },
   {
     key: "planet4",
-    name: "planet4",
+    name: " Proxima",
     isVisited: false,
 
     position: {
@@ -149,7 +149,7 @@ export let PLANETS_DATA = [
         ],
       },
     ],
-    testResult: "",
+    testResult: " Wrong, try again",
     background: "bg-4",
   },
   {
@@ -186,7 +186,7 @@ export let PLANETS_DATA = [
         ],
       },
     ],
-    testResult: "",
+    testResult: " Wrong, try again",
     background: "bg-5",
   },
 ];

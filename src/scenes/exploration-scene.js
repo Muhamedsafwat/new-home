@@ -28,7 +28,6 @@ export class ExplorationScene extends Phaser.Scene {
     // Create the stars background and spaceship objects
     this.starsBackground = new StarsBackground(this);
     this.spaceShip = new SpaceShip(this);
-   
 
     if (!this.planets.length) {
       PLANETS_DATA.forEach((planet) => {
@@ -76,11 +75,12 @@ export class ExplorationScene extends Phaser.Scene {
       // @ts-ignore
       if (!planet.planetData.isVisited) {
         allVisited = false;
-        return
+        return;
       }
     });
 
-    if (allVisited) this.scene.start("ChoosePlanetScene");
+    if (allVisited)
+      this.scene.start("ChoosePlanetScene", { planets: this.planets });
   }
 
   handleOverlap(spaceShipGameObject, planetGameObject) {
