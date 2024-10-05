@@ -34,7 +34,7 @@ export class PlanetChoiceCard extends Phaser.GameObjects.Container {
             this.#image.y + 150,  // Adjusted to start from the left side of the panel
             this.#text,
             {
-                font: '27px Arial',
+                font: '27px Handjet',
                 color: '#fff',  // Changed 'fill' to 'color' as per Phaser's documentation
             }
         );

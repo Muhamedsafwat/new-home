@@ -66,7 +66,7 @@ export class ChoosePlanetScene extends Phaser.Scene {
       200,
       "After learning about the conditions suitable for life, which planet do you thing is the most hapitable",
       {
-        font: "48px Arial",
+        font: "36px Handjet",
         color: "#fff",
         wordWrap: { width: this.scale.width * 0.6 },
         align: "center",

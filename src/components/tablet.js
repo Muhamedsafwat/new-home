@@ -35,7 +35,7 @@ export class Tablet extends Phaser.GameObjects.Container {
         this.#tabletImage.y + index * 100 - 200, // Adjusted to start from the top of the image with spacing
         property.name,
         {
-          font: "36px Arial",
+          font: "32px Handjet",
           color: "#000000", // Changed 'fill' to 'color' as per Phaser's documentation
           wordWrap: { width: this.#tabletImage.displayWidth * 0.8 },
         }
@@ -84,7 +84,7 @@ export class Tablet extends Phaser.GameObjects.Container {
       this.#tabletImage.y + 4 * 100 - 200, // Adjusted to start from the top of the image with spacing
       "الرجوع الي السفينة",
       {
-        font: "36px Arial",
+        font: "32px Handjet",
         color: "#000000", // Changed 'fill' to 'color' as per Phaser's documentation
         wordWrap: { width: this.#tabletImage.displayWidth * 0.8 },
       }
