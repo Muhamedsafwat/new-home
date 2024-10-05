@@ -47,6 +47,7 @@ export class ExplorationScene extends Phaser.Scene {
   }
 
   handleOverlap(spaceShipGameObject, planetGameObject) {
+    planetGameObject.planetData.isVisited = true;
     // @ts-ignore
     this.scene.start("ExaminePlanet", {
       planetData: planetGameObject.planetData,

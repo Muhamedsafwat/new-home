@@ -15,6 +15,7 @@ export class ExaminePlanet extends Phaser.Scene {
       "هيا بنا نستكشف خواص هذا الكوكب",
     ];
     this.#planetData = planetData;
+    this.#timesClicked = 0;
   }
 
   preload() {
@@ -47,7 +48,6 @@ export class ExaminePlanet extends Phaser.Scene {
       this.scale.width / 2 - 200,
       this.scale.height - 180
     ); // Adjust position as needed
-    console.log(this.#planetData);
     //create tablet instance
     this.#tablet = new Tablet(this, "tablet", this.#planetData.properties);
 
@@ -61,6 +61,7 @@ export class ExaminePlanet extends Phaser.Scene {
     // Logic to execute when space is pressed
     if (this.#timesClicked >= this.#textArray.length - 1) {
       this.add.existing(this.#tablet);
+      this.#timesClicked = 0;
     } else {
       this.#timesClicked++;
     }

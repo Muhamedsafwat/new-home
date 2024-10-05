@@ -3,9 +3,9 @@ export class Planet extends Phaser.GameObjects.Container {
   #x;
   #y;
   #planetSprite;
-
   /** @param {Phaser.Scene} scene */
-  constructor(scene, x, y, planetSprite, planetData) {
+  constructor(scene, x, y, planetSprite, planetData, planetName) {
+    // Added planetName parameter
     super(scene, x, y);
     this.planetData = planetData;
 
@@ -19,11 +19,9 @@ export class Planet extends Phaser.GameObjects.Container {
     this.body.setCollideWorldBounds(true); // Prevent going off screen
     this.body.setImmovable(true); // Set immovable since planet should not move
     this.setDepth(1); // Ensure it renders above the stars background
-
     // Create the sprites
     this.#planetSprite = scene.add.sprite(this.#x, this.#y, planetSprite);
-
-    // Add sprites to the container
-    this.add([this.#planetSprite]);
+    // Add sprites and text to the container
+    this.add([this.#planetSprite]); // Added text to the container
   }
 }
