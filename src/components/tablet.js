@@ -6,16 +6,12 @@ export class Tablet extends Phaser.GameObjects.Container {
   #textPanel;
   #tabletImage;
   #imageKey;
-  #properties = [
-    { name: "Water", details: "Very good" },
-    { name: "Gravity", details: "Stable" },
-    { name: "Atmosphere", details: "breathable" },
-    { name: "Soil", details: "fertile" },
-  ];
+  #properties;
 
-  constructor(scene, imageKey) {
+  constructor(scene, imageKey, properties) {
     super(scene, 0, 0); // Call super with initial x and y coordinates
     this.#imageKey = imageKey;
+    this.#properties = properties;
     this.create(); // Call create in the constructor
   }
 
