@@ -1,6 +1,5 @@
 import Phaser from "./lib/phaser.js";
 import { StartScene } from "./scenes/start-scene.js";
-import { VideoScene } from "./scenes/video-scene.js";
 import { ExplorationScene } from "./scenes/exploration-scene.js";
 import { PreloadScene } from "./scenes/preload-scene.js";
 import { LifeStandardsScene } from "./scenes/life-standards-scene.js";
@@ -34,7 +33,6 @@ const game = new Phaser.Game({
 
 game.scene.add("PreloadScene", PreloadScene);
 game.scene.add("StartScene", StartScene);
-game.scene.add("VideoScene", VideoScene);
 game.scene.add("LevelOneScene", LevelOneScene);
 game.scene.add("ExplorationScene", ExplorationScene);
 game.scene.add("LifeStandardsScene", LifeStandardsScene);

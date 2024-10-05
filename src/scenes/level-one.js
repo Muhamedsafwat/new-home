@@ -1,24 +1,22 @@
 //import { drawFullWidthBox } from '../utils.js';
 
 export class LevelOneScene extends Phaser.Scene {
+  #lang;
   constructor() {
     super("LevelOneScene");
     this.currentTextIndex = 0;
     this.textArray = [
-      "Press SPACE to change this text!",
-      "في عام 2050، قد يحدث شيء مدهش، ولكنه أيضًا مخيف. إذا لم نعتنِ بكوكب الأرض، يمكن أن يتغير  كل شيء. دعوني أخبركم عن الأسباب التى قد توئدى لدمار الارض",
-      "تغير المناخ. عندما يزداد الدفء في الأرض بسبب انبعاثات الغازات، يصبح الجو حارًا جدًا. يذوب الثلج في القطبين، وتختفي الأنهار",
-      "التلوث. تلوث الهواء والماء يعني أن الأشياء التي نستخدمها أحيانًا تضر بيئتنا. إذا لم نكن حذرين، سنستيقظ يومًا ما في كوكب ملوث، حيث لا نستطيع اللعب في الهواء النقي",
-      "النمو السكاني. عندما يصبح عدد الناس كبيرًا جدًا، نحتاج إلى المزيد من الطعام والماء. هذا الضغط يمكن أن يؤدي إلى استنزاف موارد الأرض بشكل مفرط",
+      "تعليمات اللعبة\n1- اضغط مسافة لمشاهدة المزيد\n2- اضغط على النص للاطلاع على الترجمة",
+      "عام 2050، نتيجة كثرة الشماكل البيئية انقرضت عدد كبير من فصائل الحيوانات",
+      "واصبحت حياة البشر نفسهم مهددة بالخطر"
     ];
 
     this.translationArray = [
-      "اضغط SPACE لتغيير هذا النص!",
-      "In 2050, something amazing might happen, but it is also scary. If we do not take care of the planet, everything can change. Let me tell you about the reasons that may lead to the destruction of the Earth.",
-      "Climate change. When the Earth warms due to gas emissions, it becomes too hot. Ice melts at the poles, and rivers disappear.",
-      "Pollution. Air and water pollution means that things we sometimes use harm our environment. If we’re not careful, we might wake up one day on a polluted planet where we can’t play in fresh air.",
-      "Population growth. When the number of people becomes too large, we need more food and water. This pressure can lead to excessive depletion of Earth’s resources.",
+      "Game Instructions\n1- Press SPACE to view more info\n2- Click on the text to view translation",
+      "In 2050, due to numerous environmental problems, a large number of animal species became extinct.",
+      "And human life itself became threatened with danger...",
     ];
+    this.#lang = "ar";
   }
 
   preload() {
@@ -59,19 +57,21 @@ export class LevelOneScene extends Phaser.Scene {
         this.scale.height / 2 + 10,
         this.textArray[this.currentTextIndex],
         {
-          font: "24px Arial",
+          font: "24px Handjet",
           // @ts-ignore
           fill: "#000000",
           padding: {
-            left: 10,
-            right: 10,
-            top: 5,
-            bottom: 5,
+            left: 16,
+            right: 16,
+            top: 12,
+            bottom: 12,
           },
           wordWrap: {
             width: boxWidth - 20,
             useAdvancedWrap: true,
           },
+          align: "center",
+          lineSpacing: 2,
         }
       )
       .setOrigin(0.5, 0.5);
@@ -111,8 +111,12 @@ export class LevelOneScene extends Phaser.Scene {
   }
 
   handleTextBoxClick() {
+    this.#lang = this.#lang == "ar" ? "en" : "ar";
     //  this.sound.play("clickSound"); // Play click sound when the text box is clicked
-    const translation = this.translationArray[this.currentTextIndex];
+    const translation =
+      this.#lang == "ar"
+        ? this.textArray[this.currentTextIndex]
+        : this.translationArray[this.currentTextIndex];
     this.changeText(translation);
   }
 }

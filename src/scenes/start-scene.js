@@ -46,7 +46,7 @@ export class StartScene extends Phaser.Scene {
     // Detecting the spacebar press
     this.input.keyboard.on("keydown-SPACE", () => {
       // Move to the next scene, for example, 'GameScene'
-      this.scene.start("VideoScene");
+      this.scene.start("LevelOneScene");
     });
   }
 }
