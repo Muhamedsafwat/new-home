@@ -2,6 +2,7 @@ export const PLANETS_DATA = [
   {
     key: "planet1",
     name: "planet1",
+    isVisited: false,
     position: {
       x: 200,
       y: 100,
@@ -13,11 +14,14 @@ export const PLANETS_DATA = [
       temperature: [],
     },
     testResult: "",
+    background: "bg-1",
   },
- 
+
   {
     key: "planet2",
     name: "planet2",
+    isVisited: false,
+
     position: {
       x: 100,
       y: 900,
@@ -29,10 +33,13 @@ export const PLANETS_DATA = [
       temperature: [],
     },
     testResult: "",
+    background: "bg-2",
   },
   {
     key: "planet3",
     name: "planet3",
+    isVisited: false,
+
     position: {
       x: 1800,
       y: 800,
@@ -44,10 +51,13 @@ export const PLANETS_DATA = [
       temperature: [],
     },
     testResult: "",
+    background: "bg-3",
   },
   {
     key: "planet4",
     name: "planet4",
+    isVisited: false,
+
     position: {
       x: 1850,
       y: 0,
@@ -59,10 +69,12 @@ export const PLANETS_DATA = [
       temperature: [],
     },
     testResult: "",
+    background: "bg-4",
   },
   {
     key: "planet5",
     name: "planet5",
+    isVisited: false,
     position: {
       x: 900,
       y: 50,
@@ -74,5 +86,6 @@ export const PLANETS_DATA = [
       temperature: [],
     },
     testResult: "",
+    background: "bg-5",
   },
 ];

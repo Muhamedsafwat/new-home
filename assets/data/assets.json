@@ -138,5 +138,35 @@
                 "url": "planet5.png"
             }
         ]
+    },
+    {
+        "path": "assets/images/planets/backgrounds",
+        "files": [
+            {
+                "type": "image",
+                "key": "bg1",
+                "url": "bg-1.jpg"
+            },
+            {
+                "type": "image",
+                "key": "bg2",
+                "url": "bg-2.jpg"
+            },
+            {
+                "type": "image",
+                "key": "bg3",
+                "url": "bg-3.jpg"
+            },
+            {
+                "type": "image",
+                "key": "bg4",
+                "url": "bg-4.jpg"
+            },
+            {
+                "type": "image",
+                "key": "bg5",
+                "url": "bg-5.jpg"
+            }
+        ]
     }
 ]
