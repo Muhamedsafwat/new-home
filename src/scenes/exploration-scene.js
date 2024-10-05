@@ -30,7 +30,8 @@ export class ExplorationScene extends Phaser.Scene {
         this,
         planet.position.x,
         planet.position.y,
-        planet.name
+        planet.key,
+        planet
       ).setScale(0.3);
       this.planets.push(newPLanet);
 
@@ -46,8 +47,10 @@ export class ExplorationScene extends Phaser.Scene {
   }
 
   handleOverlap(spaceShipGameObject, planetGameObject) {
-    console.log("SpaceShip collided with Planet!");
-    console.log(spaceShipGameObject, planetGameObject);
+    // @ts-ignore
+    this.scene.start("ExaminePlanet", {
+      planetData: planetGameObject.planetData,
+    });
   }
 
   update() {

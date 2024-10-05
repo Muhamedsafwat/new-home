@@ -1,11 +1,13 @@
 export class Planet extends Phaser.GameObjects.Container {
+  planetData;
   #x;
   #y;
   #planetSprite;
 
   /** @param {Phaser.Scene} scene */
-  constructor(scene, x, y, planetSprite) {
+  constructor(scene, x, y, planetSprite, planetData) {
     super(scene, x, y);
+    this.planetData = planetData;
 
     // Add the spaceship to the scene
     // Add the planet to the scene
